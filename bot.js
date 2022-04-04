@@ -288,8 +288,8 @@ async function refreshTokens() {
 function connectSocket() {
     console.log('Verbinden met PlaceNL server...')
 
-    socket = new WebSocket('wss://placenl.noahvdaa.me/api/ws');
-
+    socket = new WebSocket('ws://home.waxdt.com:3987/api/ws');
+3987
     socket.onerror = function (e) {
         console.error("Socket error: " + e.message)
     }
@@ -311,7 +311,7 @@ function connectSocket() {
         switch (data.type.toLowerCase()) {
             case 'map':
                 console.log(`Nieuwe map geladen (reden: ${data.reason ? data.reason : 'verbonden met server'})`)
-                currentOrders = await getMapFromUrl(`https://placenl.noahvdaa.me/maps/${data.data}`);
+                currentOrders = await getMapFromUrl(`http://home.waxdt.com:3987/maps/${data.data}`);
                 currentOrderList = getRealWork(currentOrders.data);
                 break;
             default:
